@@ -20,7 +20,7 @@
                 Console.WriteLine("please pick a proffesion 1-barbarian, 2-rogue, 3-mage:");
                 Console.Write(">>>");
                 string? proffesion = Console.ReadLine();
-                if (Validator.validateAddtoDB(firstName, lastName, proffesion))
+                if (Validator.validateData(firstName, lastName, proffesion))
                 {
                     proffesion = proffesion switch
                     {
@@ -30,7 +30,7 @@
                         _ => string.Empty
                     };
 
-                    var gladiator = new Gladiator(firstName, lastName, proffesion);
+                    Gladiator gladiator = new(firstName, lastName, proffesion);
                     Context.Gladiators.Add(gladiator);
                     Context.SaveChanges();
                     break;

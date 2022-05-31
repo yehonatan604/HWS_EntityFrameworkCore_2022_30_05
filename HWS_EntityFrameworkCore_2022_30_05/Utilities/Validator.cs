@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HWS_EntityFrameworkCore_2022_30_05
+﻿namespace HWS_EntityFrameworkCore_2022_30_05
 {
     public static class Validator
     {
+        //validates that a string is a number
         public static bool ValidateNumber(string s)
         {
             try
@@ -21,7 +16,8 @@ namespace HWS_EntityFrameworkCore_2022_30_05
             }
             return true;
         }
-        public static bool validateAddtoDB(params string[] data)
+        //validates if record is valid
+        public static bool validateData(params string[] data)
         {
             foreach (string s in data)
             {
@@ -31,13 +27,8 @@ namespace HWS_EntityFrameworkCore_2022_30_05
                     return false;
                 }
             }
-            try
+            if (!ValidateNumber(data[data.Length]))
             {
-                Convert.ToInt32(data.Length);
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("enter a number only for proffesion.");
                 return false;
             }
             return true;
